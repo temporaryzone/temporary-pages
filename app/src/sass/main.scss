@@ -1,0 +1,17 @@
+@import 'import';
+
+
+body, html {
+    background-color: black;
+    font-family: 'Inter', Helvetica, Arial, sans-serif;
+    color: white;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+ 
+
+
+#app {
+    text-align: center;
+    margin-top: 60px;
+}
