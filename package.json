@@ -1,7 +1,7 @@
 {
   "name": "temporary-pages",
-  "description": "A Vue.js project",
-  "author": "kris",
+  "description": "Tiny system for managing community library written in node.js ",
+  "author": "krisak",
   "private": true,
   "scripts": {
     "watchify": "watchify -vd -p browserify-hmr -e app/src/js/main.js -o app/public/js/build.js",
@@ -17,21 +17,20 @@
     "lodash": "^4.17.4",
     "nedb": "^1.8.0",
     "node-sass": "^4.7.2",
-    "vue": "^2.0.1"
+    "vue": "^2.5.13"
   },
   "devDependencies": {
-    "babel-core": "^6.0.0",
-    "babel-preset-es2015": "^6.0.0",
-    "babelify": "^7.2.0",
-    "browserify": "^13.0.1",
-    "browserify-hmr": "^0.3.1",
-    "cross-env": "^1.0.6",
-    "envify": "^3.4.1",
-    "http-server": "^0.9.0",
-    "npm-run-all": "^2.1.2",
-    "uglify-js": "^2.5.0",
-    "vueify": "^9.1.0",
-    "watchify": "^3.4.0"
+    "babel-core": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babelify": "^8.0.0",
+    "browserify": "^15.2.0",
+    "browserify-hmr": "^0.3.6",
+    "cross-env": "^5.1.3",
+    "envify": "^4.1.0",
+    "npm-run-all": "^4.1.2",
+    "uglify-js": "^3.3.7",
+    "vueify": "^9.4.1",
+    "watchify": "^3.9.0"
   },
   "browserify": {
     "transform": [

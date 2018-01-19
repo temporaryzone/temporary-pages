@@ -19,7 +19,10 @@ app.get("/", function(req, res) {
 });
 
 app.get("/api/books", function(req, res) {
-  res.json(['too', 'much', 'fun']);
+  db.find({}, function(err, docs) {
+    res.json(docs);
+  });
+  
 
 });
 

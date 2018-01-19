@@ -7,7 +7,7 @@
     <h2>Essential Links</h2>
     <h2 @click="getBooks()">Load books</h2>
     <div class="books" v-for="book in books">
-      <p>{{ book }}</p>
+      <p>{{ book.title }}</p>
     </div>
   </div>
 </template>
@@ -18,36 +18,26 @@ export default {
   name: 'app',
   data () {
     return {
-      msg: 'Hello library',
+      msg: 'Hello librarfsy',
       books: {},
     }
   },
   methods: {
-    getBooks: function() {
-      var that = this;
+    getBooks() {
+      // var that = this;
         axios.get('/api/books')
-        .then(function (response) {
-         that.books = response.data;
+        .then(response => {
+         this.books = response.data;
           console.log(response);
         })
-        .catch(function (error) {
+        .catch(error => {
           console.log(error);
         });
       
     }
   },
   computed: {
-    // books: function () {
-    //   axios.get('/api/books')
-    //   .then(function (response) {
-    //     console.log(response);
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
-    //   return ['A', 'B'];
-      
-    // }
+
   }
 }
 </script>
