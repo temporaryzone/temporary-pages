@@ -3,6 +3,8 @@ node_modules/
 dist/build.js
 npm-debug.log
 yarn-error.log
+app/public/*
+db
 
 # Editor directories and files
 .idea

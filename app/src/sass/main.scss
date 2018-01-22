@@ -1,17 +1,60 @@
-@import 'import';
+@import "import";
 
-
-body, html {
-    background-color: black;
-    font-family: 'Inter', Helvetica, Arial, sans-serif;
-    color: white;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+body,
+html {
+	background-color: hsl(0, 0, 30);
+	font-family: "Inter", Helvetica, Arial, sans-serif;
+	color: white;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-size: 100%;
 }
- 
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 400;
+}
 
 
 #app {
-    text-align: center;
-    margin-top: 60px;
+	margin-top: 60px;
+}
+
+.books {
+	width: 100%;
+}
+
+.bookbox {
+	width: 100%;
+	float: left;
+	min-height: 200px;
+	
+
+	@media (min-width: 800px) {
+		width: calc(100%/2);
+	}
+
+	@media (min-width: 1279px) {
+		width: calc(100%/3);
+	}
+
+	@media (min-width: 1400px) {
+		width: calc(100%/4);
+	}
+
+	.colorboxes {
+		height: 1px;
+		&:nth-of-type(1) {
+			// height: 30px;
+		}
+		&:nth-of-type(2) {
+			height: 10px;
+		}
+	}
+	.colorbox {
+		width: 20%;
+		height: 100%;
+		float: left;
+
+	}
+
 }

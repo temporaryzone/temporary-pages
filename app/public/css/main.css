@@ -3,13 +3,42 @@
   font-weight: 400;
   src: url("/static/fonts/Inter-UI-Regular.woff2") format("woff2"), url("/static/fonts/Inter-UI-Regular.woff") format("woff"); }
 
-body, html {
-  background-color: black;
-  font-family: 'Inter', Helvetica, Arial, sans-serif;
+body,
+html {
+  background-color: #4d4d4d;
+  font-family: "Inter", Helvetica, Arial, sans-serif;
   color: white;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; }
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 100%; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 400; }
 
 #app {
-  text-align: center;
   margin-top: 60px; }
+
+.books {
+  width: 100%; }
+
+.bookbox {
+  width: 100%;
+  float: left;
+  min-height: 200px; }
+  @media (min-width: 800px) {
+    .bookbox {
+      width: calc(100%/2); } }
+  @media (min-width: 1279px) {
+    .bookbox {
+      width: calc(100%/3); } }
+  @media (min-width: 1400px) {
+    .bookbox {
+      width: calc(100%/4); } }
+  .bookbox .colorboxes {
+    height: 1px; }
+    .bookbox .colorboxes:nth-of-type(2) {
+      height: 10px; }
+  .bookbox .colorbox {
+    width: 20%;
+    height: 100%;
+    float: left; }

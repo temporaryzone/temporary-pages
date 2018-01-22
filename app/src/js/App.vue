@@ -2,18 +2,17 @@
 
 <template>
   <div id="app">
-    <img src="http://vuejs.org/images/logo.png">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <h2 @click="getBooks()">Load books</h2>
-    <div class="books" v-for="book in books">
-      <p>{{ book.title }}</p>
+    <h2>Knihy {{ books.length }}</h2>
+    <div class="books">
+      <BookBox v-for="book in books" :book="book"></BookBox>
     </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
+import BookBox from './components/BookBox.vue';
+
 export default {
   name: 'app',
   data () {
@@ -21,6 +20,9 @@ export default {
       msg: 'Hello librarfsy',
       books: {},
     }
+  },
+  components: {
+    BookBox
   },
   methods: {
     getBooks() {
@@ -34,14 +36,23 @@ export default {
           console.log(error);
         });
       
+    },
+    loadBooks() {
+        axios.get('/api/books')
+        .then(response => {
+         this.books = response.data;
+          console.log(response);
+        })
+        .catch(error => {
+          console.log(error);
+        });
     }
   },
   computed: {
 
+  },
+  created() {
+    this.loadBooks();
   }
 }
 </script>
-
-<style lang="scss">
-
-</style>

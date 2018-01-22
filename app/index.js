@@ -10,7 +10,7 @@ app.use("/static", express.static(path.join(__dirname, "public")));
 
 
 var db = new Datastore({
-  filename: "./db/books.db",
+  filename: "./db/bookstest.db",
   autoload: true
 });
 
@@ -19,11 +19,10 @@ app.get("/", function(req, res) {
 });
 
 app.get("/api/books", function(req, res) {
-  db.find({}, function(err, docs) {
+  db.find({}).sort({ id: 1 }).exec(function(err, docs) {
     res.json(docs);
   });
   
-
 });
 
 var server = app.listen(3000, () => {
