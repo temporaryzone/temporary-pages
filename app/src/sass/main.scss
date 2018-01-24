@@ -1,10 +1,10 @@
-@import "import";
+@import "./app/src/sass/import";
 
 body,
 html {
-	background-color: hsl(0, 0, 30);
+	background-color: hsl(0, 0, 70);
 	font-family: "Inter", Helvetica, Arial, sans-serif;
-	color: white;
+	color: black;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	font-size: 100%;
@@ -14,6 +14,11 @@ h1, h2, h3, h4, h5, h6 {
 	font-weight: 400;
 }
 
+h1 {
+	font-family: 'Times New Roman', Times, serif;
+	font-size: 5rem; 
+    
+}
 
 #app {
 	margin-top: 60px;
@@ -50,7 +55,8 @@ h1, h2, h3, h4, h5, h6 {
 			height: 10px;
 		}
 	}
-	.colorbox {
+	.colorbox { 
+
 		width: 20%;
 		height: 100%;
 		float: left;

@@ -2,7 +2,7 @@
 
 <template>
   <div id="app">
-    <h2>Knihy {{ books.length }}</h2>
+    <h2>Katalog {{ books.length }}</h2>
     <div class="books">
       <BookBox v-for="book in books" :book="book"></BookBox>
     </div>
