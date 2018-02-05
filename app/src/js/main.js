@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import App from './App.vue'
 
+Vue.use(VueLazyload);
 
-new Vue({
+var vm = new Vue({
   el: '#app',
   render: h => h(App)
-})
+});

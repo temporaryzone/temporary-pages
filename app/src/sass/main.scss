@@ -1,6 +1,6 @@
 @import "./app/src/sass/import";
 
-$lightg: hsl(0, 0, 70);
+$lightg: hsl(0, 0, 60);
 $darkg: hsl(0, 0, 20);
 
 
@@ -24,53 +24,6 @@ html {
 	display: table;
 	clear: both;
 }
-header {
-	grid-column-start: 2;
-	grid-column-end: 4;
-	grid-row-start: 1;
-	grid-row-end: 2;
-	padding: 0;
-	.back {
-		width: 60%;
-		margin: 0 auto;
-	}
-
-	@extend .cf;
-
-	h1 {
-
-		margin: 0;
-		margin-top: 0px;
-		font-size: 12vw;
-
-		text-align: center;
-		margin-top: 4rem;
-		letter-spacing: -8px;
-		position: absolute;
-		width: calc((100% - #{$leftbar}));
-		mix-blend-mode: difference;
-		color: red;
-		line-height: 0.7;
-		// position: sticky;
-		// top: 10px
-	}
-	#claim {
-		grid-column-start: 2;
-		grid-column-end: 3;
-		grid-row-start: 1;
-		grid-row-end: 2;
-		margin: 0.5rem;
-		font-size: 5rem;
-		letter-spacing: -0.05em; // color: hsla(0, 0, 85, 0.1);
-		color: transparent;
-		text-shadow: 0 0 5px black;
-		animation: blackblur 4s alternate ease-out infinite;
-		line-height: 0.9; 
-		text-align: center;
-		margin: 0.3em 0 0.4em 0.4em;
-
-	}
-}
 
 h1,
 h2,
@@ -90,9 +43,6 @@ h1 {
 	// margin-top: 3rem;
 }
 
-
-
-
 #app {
 	margin-top: 60px;
 }
@@ -100,29 +50,55 @@ h1 {
 #grid {
 	display: grid;
 	grid-template-columns: $leftbar auto;
-	grid-template-rows:  auto auto;
+	grid-template-rows: auto $leftbar auto;
 
-	.catalog {
-		display: none;
-		grid-column-start: 1;
-		grid-column-end: 2;
-		grid-row-start: 2;
-		grid-row-end: 3;
-		h2 {
-			margin: 0;
-			margin-left: -3px;
-			padding: 0;
-			transform-origin: left top;
-			transform: rotate(90deg) translateY(-100%);
-			text-transform: uppercase;
-			font-size: 2rem;
-			letter-spacing: 5rem;
-			// width: 80vh;
-			@extend .cf;
-			// float: left;
-		}
+
+}
+
+header {
+	grid-column-start: 1;
+	grid-column-end: 3;
+	grid-row-start: 1;
+	grid-row-end: 2;
+	padding: 0;
+	margin: 5rem 0;
+	.back {
+		width: 60%;
+		margin: 0 auto;
 	}
+	@extend .cf;
+	h1 {
+		margin: 0;
+		margin-top: 0px;
+		font-size: 17vw;
+		text-align: center;
+		margin-top: 2rem;
+		letter-spacing: -8px;
+		position: absolute;
+		width: 100%;
+		mix-blend-mode: difference;
+		color: beige;
+		line-height: 0.7; // position: sticky;
+		filter:blur(2px);
+		animation: blackblur 4s alternate ease-out infinite;
 
+		// top: 10px
+	}
+	#claim {
+		grid-column-start: 2;
+		grid-column-end: 3;
+		grid-row-start: 1;
+		grid-row-end: 2;
+		margin: 0.5rem;
+		font-size: 9vw;
+		letter-spacing: -0.05em; // color: hsla(0, 0, 85, 0.1);
+		color: transparent;
+		text-shadow: 0 0 5px black;
+		animation: blackblur 5s alternate ease-out infinite;
+		line-height: 0.9;
+		text-align: center;
+		// margin: 0.3em 0 0.4em 0.4em;
+	}
 }
 
 
@@ -130,13 +106,9 @@ h1 {
 #sidebar {
 	grid-column-start: 1;
 	grid-column-end: 2;
-	grid-row-start: 1;
-	grid-row-end: 3;
+	grid-row-start: 2;
+	grid-row-end: 4;
 	mix-blend-mode: difference;
-	// width: $sidebarWidth;
-	// position: fixed;
-	// top: 0;
-	// right: 0;
 	.cls-1 {
 		// fill: red;
 		fill: $darkg;
@@ -155,15 +127,34 @@ h1 {
 		top: 0px;
 	}
 
+	.search {
+		h2 {
+			margin: 0;
+			margin-left: -3px;
+			padding: 0;
+			transform-origin: left top;
+			transform: rotate(90deg) translateY(-100%);
+			text-transform: uppercase;
+			font-size: 2rem;
+			letter-spacing: 5rem; // width: 80vh;
+			@extend .cf; // float: left;
+		}
+	}
 }
 
+nav {
+		grid-column-start: 1;
+		grid-column-end: 3;
+		grid-row-start: 3;
+		grid-row-end: 4;
+}
 
 .books {
 
 	grid-column-start: 2;
-	grid-column-end: 4;
-	grid-row-start: 2;
-	grid-row-end: 3;
+	grid-column-end: 3;
+	grid-row-start: 3;
+	grid-row-end: 4;
 
 	display: flex;
 	flex-wrap: wrap;
@@ -195,6 +186,9 @@ h1 {
 				color: wheat;
 				z-index: 100;
 				position: absolute;
+				width: calc((100% - #{$leftbar}) / 3);
+				background: -moz-linear-gradient( top, rgba(178, 178, 178, 0.7) 0%, rgba(178, 178, 178, 0) 100%);
+				padding: .5rem;
 	}
 
 	.colorboxes {
@@ -232,7 +226,7 @@ h1 {
 
 // vue lazy loading
 img {
-	transition: opacity 2s filter 10s;
+	transition: all 1s;
 }
 img[lazy=loading] {
 	opacity: 0;
@@ -258,6 +252,17 @@ img[lazy=loaded] {
 	}
 
 	100% {
-		text-shadow: 0;
+		text-shadow: 0 0 2px black;
+	}
+}
+
+@keyframes pages {
+	0% {
+		// text-shadow: 0 0 30px black;
+		filter: blur(30px);
+	}
+	100% {
+		// text-shadow: 0;
+		filter: blur(1px);
 	}
 }

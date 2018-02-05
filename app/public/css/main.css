@@ -534,53 +534,17 @@ textarea,
 
 body,
 html {
-  background-color: #b3b3b3;
+  background-color: #999999;
   font-family: "Helmet", Helvetica, Arial, sans-serif;
   color: #333333;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 100%; }
 
-.cf:after, header:after, #grid .catalog h2:after {
+.cf:after, header:after, #sidebar .search h2:after {
   content: "";
   display: table;
   clear: both; }
-
-header {
-  grid-column-start: 2;
-  grid-column-end: 4;
-  grid-row-start: 1;
-  grid-row-end: 2;
-  padding: 0; }
-  header .back {
-    width: 60%;
-    margin: 0 auto; }
-  header h1 {
-    margin: 0;
-    margin-top: 0px;
-    font-size: 12vw;
-    text-align: center;
-    margin-top: 4rem;
-    letter-spacing: -8px;
-    position: absolute;
-    width: calc((100% - 150px));
-    mix-blend-mode: difference;
-    color: red;
-    line-height: 0.7; }
-  header #claim {
-    grid-column-start: 2;
-    grid-column-end: 3;
-    grid-row-start: 1;
-    grid-row-end: 2;
-    margin: 0.5rem;
-    font-size: 5rem;
-    letter-spacing: -0.05em;
-    color: transparent;
-    text-shadow: 0 0 5px black;
-    animation: blackblur 4s alternate ease-out infinite;
-    line-height: 0.9;
-    text-align: center;
-    margin: 0.3em 0 0.4em 0.4em; }
 
 h1,
 h2,
@@ -596,44 +560,82 @@ h6 {
 #grid {
   display: grid;
   grid-template-columns: 150px auto;
-  grid-template-rows: auto auto; }
-  #grid .catalog {
-    display: none;
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 2;
-    grid-row-end: 3; }
-    #grid .catalog h2 {
-      margin: 0;
-      margin-left: -3px;
-      padding: 0;
-      transform-origin: left top;
-      transform: rotate(90deg) translateY(-100%);
-      text-transform: uppercase;
-      font-size: 2rem;
-      letter-spacing: 5rem; }
+  grid-template-rows: auto 150px auto; }
+
+header {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  padding: 0;
+  margin: 5rem 0; }
+  header .back {
+    width: 60%;
+    margin: 0 auto; }
+  header h1 {
+    margin: 0;
+    margin-top: 0px;
+    font-size: 17vw;
+    text-align: center;
+    margin-top: 2rem;
+    letter-spacing: -8px;
+    position: absolute;
+    width: 100%;
+    mix-blend-mode: difference;
+    color: beige;
+    line-height: 0.7;
+    filter: blur(2px);
+    animation: blackblur 4s alternate ease-out infinite; }
+  header #claim {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    margin: 0.5rem;
+    font-size: 9vw;
+    letter-spacing: -0.05em;
+    color: transparent;
+    text-shadow: 0 0 5px black;
+    animation: blackblur 5s alternate ease-out infinite;
+    line-height: 0.9;
+    text-align: center; }
 
 #sidebar {
   grid-column-start: 1;
   grid-column-end: 2;
-  grid-row-start: 1;
-  grid-row-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 4;
   mix-blend-mode: difference; }
   #sidebar .cls-1 {
     fill: #333333; }
   #sidebar .cls-2 {
-    fill: #b3b3b3; }
+    fill: #999999; }
   #sidebar .block {
     margin-bottom: 5px; }
   #sidebar #tmp_zone_img {
     position: sticky;
     top: 0px; }
+  #sidebar .search h2 {
+    margin: 0;
+    margin-left: -3px;
+    padding: 0;
+    transform-origin: left top;
+    transform: rotate(90deg) translateY(-100%);
+    text-transform: uppercase;
+    font-size: 2rem;
+    letter-spacing: 5rem; }
+
+nav {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 3;
+  grid-row-end: 4; }
 
 .books {
   grid-column-start: 2;
-  grid-column-end: 4;
-  grid-row-start: 2;
-  grid-row-end: 3;
+  grid-column-end: 3;
+  grid-row-start: 3;
+  grid-row-end: 4;
   display: flex;
   flex-wrap: wrap; }
 
@@ -655,7 +657,10 @@ h6 {
     margin: 0;
     color: wheat;
     z-index: 100;
-    position: absolute; }
+    position: absolute;
+    width: calc((100% - 150px) / 3);
+    background: -moz-linear-gradient(top, rgba(178, 178, 178, 0.7) 0%, rgba(178, 178, 178, 0) 100%);
+    padding: .5rem; }
   .bookbox .colorboxes {
     height: 1px; }
     .bookbox .colorboxes:nth-of-type(2) {
@@ -675,7 +680,7 @@ h6 {
   background: -moz-linear-gradient(top, rgba(178, 178, 178, 0) 0%, rgba(178, 178, 178, 0.7) 100%); }
 
 img {
-  transition: opacity 2s filter 10s; }
+  transition: all 1s; }
 
 img[lazy=loading] {
   opacity: 0;
@@ -693,4 +698,10 @@ img[lazy=loaded] {
   0% {
     text-shadow: 0 0 30px black; }
   100% {
-    text-shadow: 0; } }
+    text-shadow: 0 0 2px black; } }
+
+@keyframes pages {
+  0% {
+    filter: blur(30px); }
+  100% {
+    filter: blur(1px); } }
