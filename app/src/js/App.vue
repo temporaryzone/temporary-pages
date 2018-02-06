@@ -6,19 +6,20 @@
 			<h1>TEMPORARY PAGES</h1>
 			<p id="claim">Nezávislá komunitní knihovna zaměřující se na teorii designu, umění 
 a digitální média.</p>
-			<p>{{ searchPhrase }}</p>
-			<!-- <p>{{ result }}</p> -->
 		</header>
-		<Sidebar :options="options" :value="searchPhrase"></Sidebar>
+		<Sidebar :options="options" v-model="searchPhrase"></Sidebar>
 		<nav>
 
 		</nav>
 		<div class="books">
 			<BookBox v-for="book in result" :book="book" :options="options.voice"></BookBox>
 		</div>
-		<div id="bookPane" v-bind:class="{ shown: showBookPane}">
-			<div class="img" v-if="paneBook !== null">
-				<img v-lazy="paneBook.thumbnail_big" alt="">
+		<div id="bookPane" :class="{ shown: showBookPane }">
+			<div class="img">
+			<img v-lazy="paneBook.thumbnail_big" v-if="paneBook" alt="">
+			</div>
+			<div class="info">
+				
 			</div>
 		</div>
 	</div>
@@ -41,8 +42,8 @@ export default {
 	  shownBooks: [],
 	  result:[],
 	  searchPhrase: "",
-	  paneBook: null,
 	  showBookPane: false,
+	  paneBook: null, 
 	  options: {
 		  voice: {
 			  mute: false,
@@ -77,8 +78,7 @@ export default {
 				return item.thumbnail_big;
 			});
 			this.fuse = new window.pages.Fuse(this.booksWithCovers, this.options.fuse);
-    		this.result = this.booksWithCovers
-        	// console.log(response);
+    		this.result = this.booksWithCovers;
         })
         .catch(error => {
         	console.log(error);
@@ -99,8 +99,7 @@ export default {
 		this.$set(this.options.voice, "voicesList", p.voicesList);
 		this.$set(this.options.voice, "voice", p.voicesList[Math.floor(Math.random()*p.voicesList.length)]);
 	},
-	showPane(book) {
-		console.log('showing book');
+	showMe(book) {
 		this.paneBook = book;
 		this.showBookPane = true;
 	}
@@ -113,11 +112,12 @@ export default {
 			this.result = this.booksWithCovers
 		else
 			this.result = this.fuse.search(this.searchPhrase.trim())
-			
 		}
   },
   created() {
-		this.$bus.on('showme', this.showPane);
+		// this.$bus.on('doSearch', this.changePhrase);
+
+	this.$bus.on('showme', this.showMe);
 
   },
   mounted() {

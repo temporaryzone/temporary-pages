@@ -21,7 +21,9 @@
 				</select>
 			</div>
 			<div id="searchbox">
-				<input type="text" name="search" id="search" ref="searchInput" v-bind:value="value" placeholder="SEARCH">
+				<!-- https://jsfiddle.net/chrisvfritz/1oqjojjx/?utm_source=website&utm_medium=embed&utm_campaign=1oqjojjx + https://vuejs.org/v2/guide/components.html#Form-Input-Components-using-Custom-Events -->
+				<input type="text" name="search" id="search" ref="searchInput" v-bind:value="value" v-on:input="updateValue($event.target.value)" placeholder="SEARCH">
+				<!-- <input type="text" name="search" id="search" ref="searchInput" v-bind:value="value" v-on:input="updateValue($event.target.value)" placeholder="SEARCH"> -->
 			</div>
 		</div>
 	</aside> 
@@ -37,17 +39,10 @@ export default {
 		'VoiceMenu': VoiceMenu
 	},
 	methods: {
-		doSearch(lol) {
-			this.$bus.emit('doSearch', lol);
-			// this.$emit('zearch', lol);
+		updateValue(value) {
+			this.$emit('input', value);
 		}
 	},
-	created() {
-		this.$bus.on('doSearch', function(lol){
-			// console.log('malejsearch');
-			// this.$refs.searchInput.value = lol;
-		});
-	}
 
 };
 </script>
