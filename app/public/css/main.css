@@ -541,7 +541,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   font-size: 100%; }
 
-.cf:after, header:after, #sidebar .search h2:after {
+.cf:after, header:after, #sidebar #searchbox:after {
   content: "";
   display: table;
   clear: both; }
@@ -553,6 +553,13 @@ h4,
 h5,
 h6 {
   font-weight: 400; }
+
+textarea:focus,
+input:focus {
+  outline: none; }
+
+*:focus {
+  outline: none; }
 
 #app {
   margin-top: 60px; }
@@ -582,7 +589,7 @@ header {
     position: absolute;
     width: 100%;
     mix-blend-mode: difference;
-    color: beige;
+    color: darkcyan;
     line-height: 0.7;
     filter: blur(2px);
     animation: blackblur 4s alternate ease-out infinite; }
@@ -604,32 +611,41 @@ header {
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 2;
-  grid-row-end: 4;
-  mix-blend-mode: difference; }
+  grid-row-end: 4; }
+  #sidebar .sticker {
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-flow: wrap column; }
   #sidebar .cls-1 {
     fill: #333333; }
   #sidebar .cls-2 {
     fill: #999999; }
   #sidebar .block {
-    margin-bottom: 5px; }
-  #sidebar #tmp_zone_img {
-    position: sticky;
-    top: 0px; }
-  #sidebar .search h2 {
+    width: 100%; }
+  #sidebar #searchbox {
     margin: 0;
-    margin-left: -3px;
+    height: 150px;
+    width: calc(100vh - 150px);
     padding: 0;
     transform-origin: left top;
     transform: rotate(90deg) translateY(-100%);
     text-transform: uppercase;
-    font-size: 2rem;
+    font-size: 75px;
     letter-spacing: 5rem; }
+    #sidebar #searchbox input {
+      width: 100%;
+      border: 0;
+      padding: 33px;
+      background: transparent; }
 
 nav {
-  grid-column-start: 1;
+  grid-column-start: 2;
   grid-column-end: 3;
-  grid-row-start: 3;
-  grid-row-end: 4; }
+  grid-row-start: 2;
+  grid-row-end: 3;
+  background: #666666; }
 
 .books {
   grid-column-start: 2;
@@ -670,6 +686,27 @@ nav {
     height: 100%;
     float: left; }
 
+#bookPane {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 1s; }
+  #bookPane.shown {
+    opacity: 1; }
+  #bookPane .img {
+    width: 50%;
+    height: 100%; }
+  #bookPane img {
+    object-fit: contain;
+    display: block;
+    width: 100%;
+    height: 100%; }
+
 #abyss {
   height: 60vw;
   margin-top: -44vw;
@@ -693,6 +730,14 @@ img[lazy=loaded] {
   /*your style here*/
   opacity: 1;
   filter: blur(0); }
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .5s; }
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0; }
 
 @keyframes blackblur {
   0% {
