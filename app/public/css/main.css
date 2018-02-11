@@ -567,7 +567,7 @@ input:focus {
 #grid {
   display: grid;
   grid-template-columns: 150px auto;
-  grid-template-rows: auto 150px auto; }
+  grid-template-rows: auto auto; }
 
 header {
   grid-column-start: 1;
@@ -575,7 +575,8 @@ header {
   grid-row-start: 1;
   grid-row-end: 2;
   padding: 0;
-  margin: 5rem 0; }
+  margin: 5rem 0;
+  height: 75vh; }
   header .back {
     width: 60%;
     margin: 0 auto; }
@@ -644,19 +645,18 @@ nav {
   grid-column-start: 2;
   grid-column-end: 3;
   grid-row-start: 2;
-  grid-row-end: 3;
-  background: #666666; }
+  grid-row-end: 3; }
 
 .books {
   grid-column-start: 2;
   grid-column-end: 3;
-  grid-row-start: 3;
+  grid-row-start: 2;
   grid-row-end: 4;
   display: flex;
   flex-wrap: wrap; }
 
 .bookbox {
-  width: calc(100% / 3);
+  width: calc(100% / 4);
   float: left;
   min-height: 100px;
   background-size: cover;
@@ -669,6 +669,11 @@ nav {
     width: 100%;
     margin: 0;
     display: block; }
+  .bookbox .empty {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding-top: 50%; }
   .bookbox h3 {
     margin: 0;
     color: wheat;
@@ -693,11 +698,9 @@ nav {
   width: 100%;
   height: 100%;
   background: black;
-  opacity: 0;
-  pointer-events: none;
-  transition: all 1s; }
+  pointer-events: none; }
   #bookPane.shown {
-    opacity: 1; }
+    pointer-events: all; }
   #bookPane .img {
     width: 50%;
     height: 100%; }
@@ -733,11 +736,21 @@ img[lazy=loaded] {
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity .5s; }
+  transition: opacity 0.4s; }
 
 .fade-enter,
 .fade-leave-to {
   opacity: 0; }
+
+.blur-enter-active,
+.blur-leave-active,
+.blur-move {
+  transition: filter 2s, opacity 0.3s, transform 0.3s; }
+
+.blur-enter,
+.blur-leave-to {
+  opacity: 0;
+  filter: blur(10px); }
 
 @keyframes blackblur {
   0% {

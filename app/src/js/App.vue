@@ -5,23 +5,28 @@
 		<header>
 			<h1>TEMPORARY PAGES</h1>
 			<p id="claim">Nezávislá komunitní knihovna zaměřující se na teorii designu, umění 
-a digitální média.</p>
+a digitálních médií.</p>
 		</header>
 		<Sidebar :options="options" v-model="searchPhrase"></Sidebar>
-		<nav>
-
-		</nav>
-		<div class="books">
-			<BookBox v-for="book in result" :book="book" :options="options.voice"></BookBox>
-		</div>
-		<div id="bookPane" :class="{ shown: showBookPane }">
-			<div class="img">
-			<img v-lazy="paneBook.thumbnail_big" v-if="paneBook" alt="">
+		<!-- <div class="books"> -->
+			<transition-group name="blur" tag="div" class="books" appear>
+				<BookBox v-for="book in result"  v-bind:key="book.id" :book="book" :options="options.voice"></BookBox>
+			</transition-group>
+		<!-- </div> -->
+		<transition name="blur">
+		<div id="bookPane" :class="{ shown: showBookPane }" v-if="showBookPane" v-on:click="showBookPane = false">
+			
+			<div class="img" >
+			<img v-lazy="paneBook.thumbnail_big"  alt="">
 			</div>
-			<div class="info">
-				
+			
+			<div class="info" v-if="paneBook">
+				<h2>{{ paneBook.title }}</h2>
+				<pre>{{ paneBook }}</pre>
 			</div>
+		
 		</div>
+		</transition>
 	</div>
 </template>
 

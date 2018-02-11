@@ -60,7 +60,7 @@ input:focus {
 #grid {
 	display: grid;
 	grid-template-columns: $leftbar auto;
-	grid-template-rows: auto $leftbar auto;
+	grid-template-rows: auto auto;
 
 
 }
@@ -72,6 +72,7 @@ header {
 	grid-row-end: 2;
 	padding: 0;
 	margin: 5rem 0;
+	    height: 75vh;
 	.back {
 		width: 60%;
 		margin: 0 auto;
@@ -170,14 +171,14 @@ nav {
 		grid-column-end: 3;
 		grid-row-start: 2;
 		grid-row-end: 3;
-		background: hsl(0, 0, 40);
+		// background: hsl(0, 0, 40);
 }
 
 .books {
 
 	grid-column-start: 2;
 	grid-column-end: 3;
-	grid-row-start: 3;
+	grid-row-start: 2;
 	grid-row-end: 4;
 
 	display: flex;
@@ -186,7 +187,7 @@ nav {
 
 .bookbox {
 	// width: calc((100vw - #{$leftbar})/5);
-	width: calc(100% / 3);
+	width: calc(100% / 4);
 	// height: calc(100%/6);
 	float: left;
 	// @extend .cf;
@@ -203,6 +204,13 @@ nav {
 		width: 100%;
 		margin: 0;
 		display: block;
+	}
+
+	.empty {
+		    width: 100%;
+		    height: 100%;
+		    text-align: center;
+		    padding-top: 50%;
 	}
 
 	h3 {
@@ -238,11 +246,15 @@ nav {
 	width: 100%;
 	height: 100%;
 	background: black;
-	opacity: 0;
 	pointer-events: none;
-	transition: all 1s;
+	// opacity: 1;
+	// opacity: 0;
+	// filter: blur(10px);
+	// transition: opacity 0.2s filter 1s;
 	&.shown {
-		opacity: 1;
+		// opacity: 1;
+		// filter: blur(0px);
+		pointer-events: all;
 	}
 	.img {
 		width: 50%;
@@ -296,16 +308,32 @@ img[lazy=loaded] {
 //vue transitions
 .fade-enter-active,
 .fade-leave-active {
-	transition: opacity .5s;
+	transition: opacity 0.4s;
 }
 
 .fade-enter,
 .fade-leave-to
 /* .fade-leave-active below version 2.1.8 */
-
 	{
 	opacity: 0;
 }
+
+.blur-enter-active,
+.blur-leave-active,
+.blur-move {
+	transition: filter 2s, opacity 0.3s, transform 0.3s;
+}
+
+.blur-enter,
+.blur-leave-to
+/* .fade-leave-active below version 2.1.8 */
+
+	{
+		opacity: 0;
+	filter: blur(10px);
+}
+
+
 
 
 

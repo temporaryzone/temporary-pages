@@ -1,7 +1,7 @@
 
 <template>
   <div class="bookbox" v-if="book.thumbnail_big !== false" v-on:mouseover="tellme(book.title)" @click="showme(book)">
-	<img v-lazy="book.thumbnail_big" alt="">
+	<img src="{{ book.thumbnail_big }}" alt="">
   </div>
 </template>
 
