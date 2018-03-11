@@ -2,14 +2,7 @@
 <template>
 	<aside id="sidebar">
 		<div class="sticker">
-			<svg id="tmp_zone_img" class="block" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
-				<title>Temporary Pages</title>
-				<rect class="cls-1" width="80" height="80" />
-				<rect class="cls-2" x="13.19" y="32" width="76" height="16" transform="translate(94.89 -8.07) rotate(94.27)" />
-				<rect class="cls-2" x="32" y="32" width="76" height="16" transform="translate(110 -30) rotate(90)" />
-				<rect class="cls-2" x="-6.06" y="32" width="76" height="16" transform="translate(76.45 14.74) rotate(99.03)" />
-				<rect class="cls-2" x="-28" y="32" width="76" height="16" transform="translate(50 30) rotate(90)" />
-			</svg>
+
 			<div id="voicemenu">
 				<!-- {{ options.voice }} -->
 				<input type="checkbox" id="checkbox" v-model="options.voice.mute">

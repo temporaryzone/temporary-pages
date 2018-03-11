@@ -3,16 +3,38 @@
 <template>
 	<div id="grid">
 		<header>
-			<h1>TEMPORARY PAGES</h1>
-			<p id="claim">Nezávislá komunitní knihovna zaměřující se na teorii designu, umění 
-a digitálních médií.</p>
+			<div class="full">
+				<svg id="tmp_zone_img" class="block" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
+					<title>Temporary <br> Pages</title>
+					<rect class="cls-1" width="80" height="80" />
+					<rect class="cls-2" x="13.19" y="32" width="76" height="16" transform="translate(94.89 -8.07) rotate(94.27)" />
+					<rect class="cls-2" x="32" y="32" width="76" height="16" transform="translate(110 -30) rotate(90)" />
+					<rect class="cls-2" x="-6.06" y="32" width="76" height="16" transform="translate(76.45 14.74) rotate(99.03)" />
+					<rect class="cls-2" x="-28" y="32" width="76" height="16" transform="translate(50 30) rotate(90)" />
+				</svg>
+			</div>
+			<div class="col1">
+				<h1>TEMPORARY<br>PAGES</h1>
+			</div>
+			<!-- <div class="col2">
+				<h2 id="claim">Nezávislá komunitní knihovna zaměřující se na teorii designu, <span style="font-size: 0.6em; display:inline-block;">🎨</span> a digitálních médií.</h2>
+			</div> -->
 		</header>
-		<Sidebar :options="options" v-model="searchPhrase"></Sidebar>
-		<!-- <div class="books"> -->
-			<transition-group name="blur" tag="div" class="books" appear>
-				<BookBox v-for="book in result"  v-bind:key="book.id" :book="book" :options="options.voice"></BookBox>
-			</transition-group>
-		<!-- </div> -->
+		<div id="infomark" v-on:click="showInfo = true">
+			?
+		</div>
+		<transition name="blur">
+			<div id="info" v-on:click="showInfo = false" v-if="showInfo">
+				<p>Nezávislá komunitní knihovna zaměřující se na teorii designu, <span style="font-size: 0.6em; display:inline-block;">🎨</span> a digitálních médií.</p>
+				<p>Pro informace o členství pište na <br><a href="mailto:mail@temporary.zone">mail@temporary.zone</a></p>
+			</div>
+		</transition>
+		<nav>
+			
+		</nav>
+		<transition-group name="blur" tag="div" class="books" appear>
+			<BookBox v-for="book in result"  v-bind:key="book.id" :book="book" :options="options.voice"></BookBox>
+		</transition-group>
 		<transition name="blur">
 		<div id="bookPane" :class="{ shown: showBookPane }" v-if="showBookPane" v-on:click="showBookPane = false">
 			
@@ -48,6 +70,7 @@ export default {
 	  result:[],
 	  searchPhrase: "",
 	  showBookPane: false,
+	  showInfo: false,
 	  paneBook: null, 
 	  options: {
 		  voice: {
