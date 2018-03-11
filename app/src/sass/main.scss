@@ -149,6 +149,13 @@ header {
 		font-size: 2rem;
 		text-align: center;
 	}
+	.bottom {
+		position: absolute;
+		bottom: 1rem;
+		left: 1rem;
+		font-family: "RobotoMono", monospace;
+		font-size:0.7rem;
+	}
 }
 
 
@@ -278,11 +285,36 @@ nav {
 	height: 100%;
 	background: black;
 	pointer-events: none;
+	
 	&.shown {
 
 		pointer-events: all;
 	}
+	.info {
+		float: left;
+		width: 50%;
+		height: 100%;
+		padding: 1rem;
+		overflow-y: auto;
+		
+		background-color:$lightg;
+		@extend .cf;
+		p {
+			font-size:0.8rem;
+			margin: 0;
+			font-family: "RobotoMono", monospace;
+		}
+		h2 {
+			margin: 0 0 1rem 0;
+			font-size: 2rem;
+			line-height: 0.8;
+		}
+		.infowrap {
+			width: 100%;
+		}
+	}
 	.img {
+		float: left;
 		width: 50%;
 		height: 100%;
 	}

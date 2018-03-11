@@ -541,7 +541,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   font-size: 120%; }
 
-.cf:after, header .col1:after, header .col2:after, header:after, #sidebar #searchbox:after {
+.cf:after, header .col1:after, header .col2:after, header:after, #sidebar #searchbox:after, #bookPane .info:after {
   content: "";
   display: table;
   clear: both; }
@@ -629,6 +629,12 @@ header {
   #info p {
     font-size: 2rem;
     text-align: center; }
+  #info .bottom {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    font-family: "RobotoMono", monospace;
+    font-size: 0.7rem; }
 
 #sidebar {
   grid-column-start: 1;
@@ -722,7 +728,25 @@ nav {
   pointer-events: none; }
   #bookPane.shown {
     pointer-events: all; }
+  #bookPane .info {
+    float: left;
+    width: 50%;
+    height: 100%;
+    padding: 1rem;
+    overflow-y: auto;
+    background-color: #999999; }
+    #bookPane .info p {
+      font-size: 0.8rem;
+      margin: 0;
+      font-family: "RobotoMono", monospace; }
+    #bookPane .info h2 {
+      margin: 0 0 1rem 0;
+      font-size: 2rem;
+      line-height: 0.8; }
+    #bookPane .info .infowrap {
+      width: 100%; }
   #bookPane .img {
+    float: left;
     width: 50%;
     height: 100%; }
   #bookPane img {

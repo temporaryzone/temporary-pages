@@ -26,7 +26,8 @@
 		<transition name="blur">
 			<div id="info" v-on:click="showInfo = false" v-if="showInfo">
 				<p>Nezávislá komunitní knihovna zaměřující se na teorii designu, <span style="font-size: 0.6em; display:inline-block;">🎨</span> a digitálních médií.</p>
-				<p>Pro informace o členství pište na <br><a href="mailto:mail@temporary.zone">mail@temporary.zone</a></p>
+				<p>Pro informace o členství, informování o chybách a další dotazy pište na <br><a href="mailto:mail@temporary.zone">mail@temporary.zone</a></p>
+				<div class="bottom">Verze 0.1 - <a href="https://github.com/temporaryzone/temporary-pages">source-code</a> </div>
 			</div>
 		</transition>
 		<nav>
@@ -43,8 +44,19 @@
 			</div>
 			
 			<div class="info" v-if="paneBook">
-				<h2>{{ paneBook.title }}</h2>
-				<pre>{{ paneBook }}</pre>
+				<div class="infowrap">
+					<h2>{{ paneBook.title }}</h2>
+					
+					<p>Autor: {{ paneBook.author_details }}</p>
+					<p>Jazyk: {{ paneBook.language }}</p>
+					<p>Isbn: {{ paneBook.isbn }}</p>
+					<p>Počet stran: {{ paneBook.pages }}</p>
+					<p>Žánr: {{ paneBook.genre }}</p>
+					<!-- <p>Žánr: {{ paneBook.genre }}</p> -->
+					<p>Description: {{ paneBook.description }}</p>
+
+					<!-- <pre>{{ paneBook }}</pre> -->
+				</div>
 			</div>
 		
 		</div>
