@@ -17,6 +17,7 @@
     "axios": "^0.17.1",
     "csvtojson": "^1.1.9",
     "express": "^4.16.2",
+    "express-basic-auth": "^1.1.4",
     "fuse.js": "^3.2.0",
     "google-books-search": "^0.3.1",
     "img-color-extractor": "^1.0.7",
@@ -24,6 +25,7 @@
     "nedb": "^1.8.0",
     "node-sass": "^4.7.2",
     "node-vibrant": "^3.0.0",
+    "sqlite3": "^3.1.13",
     "vue": "^2.5.13",
     "vue-bus": "^1.1.0",
     "vue-fuse": "^1.4.0"
