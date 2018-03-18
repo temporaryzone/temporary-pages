@@ -1,0 +1,170 @@
+@import "./app/src/sass/import";
+
+$lightg: hsl(0, 0, 60);
+$darkg: hsl(0, 0, 20);
+
+
+$leftbar: 150px;
+
+body,
+html {
+	background-color: $lightg;
+	// font-family:  Arial, sans-serif;
+	
+	// font-weight: 600;
+
+	font-family:  Helvetica, Arial, sans-serif;
+	// font-family: "Juniper", Times, serif;
+	color: $darkg;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-size: 95%;
+}
+.cf:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: 400;
+}
+
+h1 {
+	// font-family: "Inter", Helvetica, Arial, sans-serif;
+	// letter-spacing: -3px;
+	// font-size: 5rem;
+	// width: 100%;
+	// text-align: center;
+	// margin-top: 3rem;
+}
+
+textarea:focus,
+input:focus {
+	outline: none;
+}
+
+*:focus {
+	outline: none;
+}
+
+
+#admin {
+	nav {
+		position: fixed;
+		top: 0;
+		left: 0;
+		height: 40px;
+		background-color: $darkg;
+		width: 100%;
+		color: white;
+		display: flex;
+		z-index: 1000;
+		.flash {
+			padding: 0;
+    margin: 10px 0 0 10px;
+		}
+	}
+	padding-top: 50px;
+}
+
+
+.book {
+	padding: 1%;
+	width: 100%;
+	height: 300px; 
+	overflow: hidden;
+	border-bottom: 1px solid $darkg;
+	display: grid;
+	grid-template-columns: 16% 28% 28% 28%;
+	grid-template-rows: auto auto auto auto;
+	.cell {
+		padding-left: 10px;
+	}
+	._id {
+		grid-column-start: 1;
+		grid-column-end: 2;
+		grid-row-start: 1;
+		grid-row-end: 5;
+		color: white;
+		position: absolute;
+		margin: 10px;
+	}
+	img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		grid-column-start: 1;
+		grid-column-end: 2;
+		grid-row-start: 1;
+		grid-row-end: 5;
+	}
+	.desc {
+		margin: 0;
+		grid-column-start: 4;
+		grid-column-end: 5;
+		grid-row-start: 1;
+		grid-row-end: 5;
+	}
+	input {
+		display: block;
+		height: 15px;
+		// margin-left: 5px;
+		// padding: .5em .6em;
+		display: inline-block;
+
+		vertical-align: text-top;
+		box-sizing: border-box;
+		background: transparent;
+		border: 0;
+		box-shadow: none;
+	}
+	textarea {
+		box-sizing: border-box;
+		background: transparent;
+		border: 0;
+		box-shadow: none;
+	}
+}
+
+
+// forms 
+
+
+
+
+
+
+//vue transitions
+.fade-enter-active,
+.fade-leave-active {
+	transition: opacity 0.4s;
+}
+
+.fade-enter,
+.fade-leave-to
+/* .fade-leave-active below version 2.1.8 */
+	{
+	opacity: 0;
+}
+
+
+/* Enter and leave animations can use different */
+/* durations and timing functions.              */
+.slide-fade-enter-active {
+	transition: all .3s ease;
+  }
+  .slide-fade-leave-active {
+	transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  }
+  .slide-fade-enter, .slide-fade-leave-to
+  /* .slide-fade-leave-active below version 2.1.8 */ {
+	transform: translateX(10px);
+	opacity: 0;
+  }

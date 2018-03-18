@@ -5,13 +5,28 @@ const _ = require("lodash");
 const Datastore = require("nedb");
 const path = require('path');
 const utils = require('./src/node/utils.js');
-const basicAuth = require('express-basic-auth');
 
+var bodyParser = require('body-parser');
+
+// auth
+const basicAuth = require('express-basic-auth');
+// db
 const sqlite3 = require('sqlite3').verbose();
 let db = new sqlite3.Database('db/db.sqlite3');
 
-// app.set("view engine", "ejs");
+var knex = require('knex')({
+	client: 'sqlite3',
+	useNullAsDefault: true,
+	debug: true,
+	connection: {
+	  filename: "db/db.sqlite3"
+	}
+  });
+  
+
 app.use("/static", express.static(path.join(__dirname, "public")));
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 
 // app.use(basicAuth({
@@ -20,7 +35,7 @@ app.use("/static", express.static(path.join(__dirname, "public")));
 
 var staticUserAuth = basicAuth({
     users: {
-        'Admin': 'admin'
+        'admin': 'admin'
     },
     challenge: true
 })
@@ -30,8 +45,8 @@ var books = new Datastore({
   autoload: true
 });
 
-app.get('/static', staticUserAuth, function(req, res) {
-    res.status(200).send('You passed')
+app.get('/admin', staticUserAuth, function(req, res) {
+	res.sendFile("admin.html", { root: __dirname + "/src" });
 })
 
 
@@ -41,20 +56,44 @@ app.get("/", function(req, res) {
 }); 
 
 app.get("/api/books", function(req, res) {
-//   books.find({}).sort({ id: 1 }).exec(function(err, docs) {
-//     res.json(docs);
-//   });
-  
-	db.all('SELECT * FROM books', [],(err, rows) => {
-		// process rows here  
-		console.log(err);
-		console.log(rows);
+	// db.all('SELECT * FROM books', [],(err, rows) => {
+	// 	res.json(rows);
+	// });
+	
+	// knex.raw('SELECT * FROM books').then((rows) => {
+	// 	res.json(rows);
+	// });
+	knex.select().from('books').then((rows) => {
 		res.json(rows);
 	});
+});
 
+app.post("/api/post", staticUserAuth, function(req, res) {
+	console.dir(req.body[0]);
+	// var i = 1;
+	req.body.forEach(function (body) {
+		console.log(body);
+		// i++;
+		// db.run()
+		knex('books').where('_id', body._id).update(body).then(res.json({good: 'yes'}));
+	})
 
 });
 
+app.post("/api/book/:id", function(req, res) {
+	console.log("req params id: ", req.params.id);
+	console.dir(req);
+	knex('books').where('_id', req.params.id)
+				.update(req.body)
+				.then(res.json({message: 'Updated: '+ req.body.title }));
+});
+
+
+app.get("/api/book/:id", function(req, res) {
+	knex.select().from('books').where('_id', req.params.id).then((rows) => {
+		res.json(rows);
+	});
+});
 
 
 var server = app.listen(3000, () => {
