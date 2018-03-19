@@ -34,7 +34,7 @@
 				<div class="half">
 					<p>For english info feel free to email us <a href="mailto:mail@temporary.zone">mail@temporary.zone</a></p>
 				</div>
-				<div class="bottom">Verze 0.1 - <a href="https://github.com/temporaryzone/temporary-pages">source-code</a> </div>
+				<div class="bottom">Verze 0.12 / <a href="https://github.com/temporaryzone/temporary-pages">Source-code</a> / <a href="https://github.com/temporaryzone/temporary-pages/blob/master/TODO.md">Roadmap + issues</a></div>
 			</div>
 		</transition>
 		<nav>
@@ -53,16 +53,13 @@
 			<div class="info" v-if="paneBook">
 				<div class="infowrap">
 					<h2>{{ paneBook.title }}</h2>
-					
-					<p>Autor: {{ paneBook.author_details }}</p>
-					<p>Jazyk: {{ paneBook.language }}</p>
-					<p>Isbn: {{ paneBook.isbn }}</p>
-					<p>Počet stran: {{ paneBook.pages }}</p>
-					<p>Žánr: {{ paneBook.genre }}</p>
-					<!-- <p>Žánr: {{ paneBook.genre }}</p> -->
-					<p>Description: {{ paneBook.description }}</p>
-
-					<!-- <pre>{{ paneBook }}</pre> -->
+					<p v-if="paneBook.authors">Autor: <span v-for="author in JSON.parse(paneBook.authors)">{{author}} /</span></p>
+					<p>Identifikátor: {{ paneBook._id }}</p>
+					<p v-if="paneBook.owner">Původ: {{ paneBook.owner }}</p>
+					<p v-if="paneBook.language">Jazyk: {{ paneBook.language }}</p>
+					<p v-if="paneBook.isbn">Isbn: {{ paneBook.isbn }}</p>
+					<p v-if="paneBook.pages">Počet stran: {{ paneBook.pages }}</p>
+					<p v-if="paneBook.description">Description: {{ paneBook.description }}</p>
 				</div>
 			</div>
 		
