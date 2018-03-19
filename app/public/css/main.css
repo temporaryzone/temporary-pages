@@ -614,22 +614,25 @@ header {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #333333;
+  background-color: #999999;
   z-index: 1001;
-  color: #999999;
-  font-size: 2rem;
-  text-align: center;
-  padding: 3rem;
-  cursor: pointer; }
+  color: #333333;
+  font-size: 0.8rem;
+  padding: 1rem;
+  cursor: pointer;
+  font-family: "RobotoMono", monospace; }
+  #info .half {
+    width: 45%;
+    float: left;
+    padding-right: 10%; }
   #info p {
-    font-size: 2rem;
-    text-align: center; }
+    margin-top: 0;
+    margin-bottom: 1rem; }
   #info .bottom {
     position: absolute;
     bottom: 1rem;
     left: 1rem;
-    font-family: "RobotoMono", monospace;
-    font-size: 0.7rem; }
+    font-family: "RobotoMono", monospace; }
 
 #sidebar {
   grid-column-start: 1;
@@ -720,7 +723,8 @@ nav {
   width: 100%;
   height: 100%;
   background: black;
-  pointer-events: none; }
+  pointer-events: none;
+  cursor: pointer; }
   #bookPane.shown {
     pointer-events: all; }
   #bookPane .info {

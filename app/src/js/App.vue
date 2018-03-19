@@ -25,8 +25,15 @@
 		</div>
 		<transition name="blur">
 			<div id="info" v-on:click="showInfo = false" v-if="showInfo">
-				<p>Nezávislá komunitní knihovna zaměřující se na teorii designu, <span style="font-size: 0.6em; display:inline-block;">🎨</span> a digitálních médií.</p>
-				<p>Pro informace o členství, informování o chybách a další dotazy pište na <br><a href="mailto:mail@temporary.zone">mail@temporary.zone</a></p>
+				<div class="half">
+					<p>Temporary Pages je nezávislá komunitní knihovna zaměřující se primárně na teorii designu, umění, média a politiku.</p>
+					<p>Z ročního členského poplatku 300Kč se výhradně dokupují knihy. O výběru knih hlasují členové.</p>
+					<p>Knihy uloženy k zapujčení v Brně na Kraví hoře.</p>
+					<p>Pro informace o členství, informování o chybách a další dotazy pište na <br><a href="mailto:mail@temporary.zone">mail@temporary.zone</a></p>
+				</div>
+				<div class="half">
+					<p>For english info feel free to email us <a href="mailto:mail@temporary.zone">mail@temporary.zone</a></p>
+				</div>
 				<div class="bottom">Verze 0.1 - <a href="https://github.com/temporaryzone/temporary-pages">source-code</a> </div>
 			</div>
 		</transition>

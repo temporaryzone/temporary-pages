@@ -137,24 +137,31 @@ header {
 	left:0;
 	width: 100%;
 	height: 100%;
-	background-color:$darkg;
+	background-color:$lightg;
 	z-index: 1001;
-	color:$lightg;
+	color:$darkg;
 	// opacity: 0;
-	font-size: 2rem;
-	text-align: center;
-	padding: 3rem;
+	font-size:0.8rem;
+	padding: 1rem;
 	cursor: pointer;
+	font-family: "RobotoMono", monospace;
+	.half {
+		width: 45%;
+		float: left;
+		padding-right: 10%;
+	
+	}
 	p {
-		font-size: 2rem;
-		text-align: center;
+		
+		margin-top: 0;
+		margin-bottom: 1rem;
 	}
 	.bottom {
 		position: absolute;
 		bottom: 1rem;
 		left: 1rem;
 		font-family: "RobotoMono", monospace;
-		font-size:0.7rem;
+		
 	}
 }
 
@@ -285,6 +292,7 @@ nav {
 	height: 100%;
 	background: black;
 	pointer-events: none;
+	cursor: pointer;
 	
 	&.shown {
 

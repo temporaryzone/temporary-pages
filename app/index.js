@@ -63,9 +63,23 @@ app.get("/api/books", function(req, res) {
 	// knex.raw('SELECT * FROM books').then((rows) => {
 	// 	res.json(rows);
 	// });
-	knex.select().from('books').then((rows) => {
+	knex.select().from('books').where('show', 1).then((rows) => {
+		fisherYates(rows);
 		res.json(rows);
 	});
+
+	function fisherYates ( myArray ) {
+		var i = myArray.length;
+		if ( i == 0 ) return false;
+		while ( --i ) {
+		   var j = Math.floor( Math.random() * ( i + 1 ) );
+		   var tempi = myArray[i];
+		   var tempj = myArray[j];
+		   myArray[i] = tempj;
+		   myArray[j] = tempi;
+		 }
+	  }
+	  
 });
 
 app.post("/api/post", staticUserAuth, function(req, res) {
